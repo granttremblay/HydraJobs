@@ -1,0 +1,25 @@
+# /bin/bash
+# ----------------Parameters---------------------- #
+#$ -S /bin/bash
+#$ -pe mthread 24
+#$ -l s_cpu=0:20:00
+#$ -l mres=5.33G,h_data=5.33G,h_vmem=5.33G
+#$ -cwd
+#$ -j y
+#$ -N Grant_MUSE_biastest
+#$ -o Grant_MUSE_biastest.log
+#$ -m bea
+#$ -M grant.tremblay@cfa.harvard.edu
+#
+# ----------------Modules------------------------- #
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+source ~/.dotfiles/Linux/hydra/set_eso_pipeline_environment.bash
+cd /home/gtremblay/data/Data/MUSE/reduction/01_bias/
+sh make_bias.sh
+#
+echo = `date` job $JOB_NAME done
