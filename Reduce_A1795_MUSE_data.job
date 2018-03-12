@@ -20,6 +20,6 @@ echo + NSLOTS = $NSLOTS
 #
 source ~/.dotfiles/Linux/hydra/set_eso_pipeline_environment.bash
 cd /data/sao/gtremblay/Data/MUSE/hydra_reduction/
-sh Reduce_A1795_MUSE_data.sh
+sh /home/gtremblay/HydraJobs/Reduce_A1795_MUSE_data.sh
 #
 echo = `date` job $JOB_NAME done
