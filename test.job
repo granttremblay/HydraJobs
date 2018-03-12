@@ -6,8 +6,8 @@
 #$ -l mres=5.33G,h_data=5.33G,h_vmem=5.33G
 #$ -cwd
 #$ -j y
-#$ -N Grant_MUSE_biastest
-#$ -o Grant_MUSE_biastest.log
+#$ -N test.job
+#$ -o ../HydraLogs/test.log
 #$ -m bea
 #$ -M grant.tremblay@cfa.harvard.edu
 #
