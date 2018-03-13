@@ -42,10 +42,15 @@ esorex --log-file=lsf.log muse_lsf --nifu=-1 --merge lsf.sof
 
 
 echo " "
-echo "=======         IT'S TWILIGHT TIME      ======="
+echo "=======          TWILIGHT FLATS         ======="
 esorex --log-file=twilight.log muse_twilight twilight.sof
 
 
 echo " "
-echo "=======            SCI BASIC            ======="
+echo "=======    SCIBASIC for SCI FRAMES      ======="
 esorex --log-file=science_scibasic.log muse_scibasic --nifu=-1 --merge science_scibasic.sof
+
+
+echo " "
+echo "=======    SCIBASIC for STD FRAME       ======="
+esorex --log-file=science_scibasic.log muse_scibasic --nifu=-1 --merge std_scibasic.sof
