@@ -7,7 +7,7 @@
 #$ -cwd
 #$ -j y
 #$ -N Reduce_A1795_MUSE_data
-#$ -o Reduce_A1795_MUSE_data.log
+#$ -o ../HydraLogs/Reduce_A1795_MUSE_data.log
 #$ -m bea
 #$ -M grant.tremblay@cfa.havard.edu
 #
@@ -15,6 +15,27 @@
 #
 # ----------------Your Commands------------------- #
 #
+
+
+
+
+# /bin/sh
+# # ----------------Parameters---------------------- #
+# #$ -S /bin/sh
+# #$ -pe mthread 24
+# #$ -l s_cpu=5:00:00
+# #$ -l mres=6G,h_data=6G,h_vmem=6G
+# #$ -cwd
+# #$ -j y
+# #$ -N Reduce_A1795_MUSE_data
+# #$ -o ../HydraLogs/Reduce_A1795_MUSE_data.log
+# #$ -m bea
+# #$ -M grant.tremblay@cfa.harvard.edu
+# ----------------Modules------------------------- #
+# #
+# # ----------------Your Commands------------------- #
+# #
+start=`date +%s`
 echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
 echo + NSLOTS = $NSLOTS
 #
@@ -22,4 +43,7 @@ source ~/.dotfiles/Linux/hydra/set_eso_pipeline_environment.bash
 cd /data/sao/gtremblay/Data/MUSE/hydra_reduction/
 sh /home/gtremblay/HydraJobs/Reduce_A1795_MUSE_data.sh
 #
+end=`date +%s`
+runtime=$((end-start))
+echo Total runtime was $((runtime/60)) minutes
 echo = `date` job $JOB_NAME done
