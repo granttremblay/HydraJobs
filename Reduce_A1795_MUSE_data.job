@@ -1,29 +1,8 @@
 # /bin/sh
-# ----------------Parameters---------------------- #
-#$ -S /bin/sh
-#$ -pe mthread 24
-#$ -l s_cpu=0:40:00
-#$ -l mres=5.33333333G,h_data=5.33333333G,h_vmem=5.33333333G
-#$ -cwd
-#$ -j y
-#$ -N Reduce_A1795_MUSE_data
-#$ -o ../HydraLogs/Reduce_A1795_MUSE_data.log
-#$ -m bea
-#$ -M grant.tremblay@cfa.havard.edu
-#
-# ----------------Modules------------------------- #
-#
-# ----------------Your Commands------------------- #
-#
-
-
-
-
-# /bin/sh
 # # ----------------Parameters---------------------- #
 # #$ -S /bin/sh
 # #$ -pe mthread 24
-# #$ -l s_cpu=5:00:00
+# #$ -l s_cpu=7:00:00
 # #$ -l mres=6G,h_data=6G,h_vmem=6G
 # #$ -cwd
 # #$ -j y
