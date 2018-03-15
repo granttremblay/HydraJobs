@@ -55,41 +55,41 @@ echo "Static calibration directory set to: " $caldir
 # esorex --log-file=science_scibasic.log muse_scibasic --nifu=-1 --merge std_scibasic.sof
 
 
-echo " "
-echo "=======        FLUX CALIBRATION         ======="
-esorex --log-file=fluxcal.log muse_standard --filter=white fluxcal.sof
+# echo " "
+# echo "=======        FLUX CALIBRATION         ======="
+# esorex --log-file=fluxcal.log muse_standard --filter=white fluxcal.sof
 
 
-echo " "
-echo "=======     SCIENCE POSTPROCESSING      ======="
+# echo " "
+# echo "=======     SCIENCE POSTPROCESSING      ======="
 
-esorex --log-file=science_scipost.log muse_scipost --filter=white,Johnson_V,Cousins_R,Cousins_I --save=cube,individual --skymodel_fraction=0.3 --skymethod=simple science_scipost_1.sof
-cp IMAGE_FOV_0001.fits IMAGE_FOV_0001_1.fits
-cp IMAGE_FOV_0002.fits IMAGE_FOV_0002_1.fits
-cp IMAGE_FOV_0003.fits IMAGE_FOV_0003_1.fits
-cp PIXTABLE_REDUCED_0001.fits PIXTABLE_REDUCED_0001_1.fits
-cp DATACUBE_FINAL.fits DATACUBE_SINGLE_FINAL_0001_1.fits
-esorex --log-file=science_scipost.log muse_scipost --filter=white,Johnson_V,Cousins_R,Cousins_I --save=cube,individual --skymodel_fraction=0.3 --skymethod=simple science_scipost_2.sof
-cp IMAGE_FOV_0001.fits IMAGE_FOV_0001_2.fits
-cp IMAGE_FOV_0002.fits IMAGE_FOV_0002_2.fits
-cp IMAGE_FOV_0003.fits IMAGE_FOV_0003_2.fits
-cp PIXTABLE_REDUCED_0001.fits PIXTABLE_REDUCED_0001_2.fits
-cp DATACUBE_FINAL.fits DATACUBE_SINGLE_FINAL_0001_2.fits
-esorex --log-file=science_scipost.log muse_scipost --filter=white,Johnson_V,Cousins_R,Cousins_I --save=cube,individual --skymodel_fraction=0.3 --skymethod=simple science_scipost_3.sof
-cp IMAGE_FOV_0001.fits IMAGE_FOV_0001_3.fits
-cp IMAGE_FOV_0002.fits IMAGE_FOV_0002_3.fits
-cp IMAGE_FOV_0003.fits IMAGE_FOV_0003_3.fits
-cp PIXTABLE_REDUCED_0001.fits PIXTABLE_REDUCED_0001_3.fits
-cp DATACUBE_FINAL.fits DATACUBE_SINGLE_FINAL_0001_3.fits
+# esorex --log-file=science_scipost.log muse_scipost --filter=white,Johnson_V,Cousins_R,Cousins_I --save=cube,individual --skymodel_fraction=0.3 --skymethod=simple science_scipost_1.sof
+# cp IMAGE_FOV_0001.fits IMAGE_FOV_0001_1.fits
+# cp IMAGE_FOV_0002.fits IMAGE_FOV_0002_1.fits
+# cp IMAGE_FOV_0003.fits IMAGE_FOV_0003_1.fits
+# cp PIXTABLE_REDUCED_0001.fits PIXTABLE_REDUCED_0001_1.fits
+# cp DATACUBE_FINAL.fits DATACUBE_SINGLE_FINAL_0001_1.fits
+# esorex --log-file=science_scipost.log muse_scipost --filter=white,Johnson_V,Cousins_R,Cousins_I --save=cube,individual --skymodel_fraction=0.3 --skymethod=simple science_scipost_2.sof
+# cp IMAGE_FOV_0001.fits IMAGE_FOV_0001_2.fits
+# cp IMAGE_FOV_0002.fits IMAGE_FOV_0002_2.fits
+# cp IMAGE_FOV_0003.fits IMAGE_FOV_0003_2.fits
+# cp PIXTABLE_REDUCED_0001.fits PIXTABLE_REDUCED_0001_2.fits
+# cp DATACUBE_FINAL.fits DATACUBE_SINGLE_FINAL_0001_2.fits
+# esorex --log-file=science_scipost.log muse_scipost --filter=white,Johnson_V,Cousins_R,Cousins_I --save=cube,individual --skymodel_fraction=0.3 --skymethod=simple science_scipost_3.sof
+# cp IMAGE_FOV_0001.fits IMAGE_FOV_0001_3.fits
+# cp IMAGE_FOV_0002.fits IMAGE_FOV_0002_3.fits
+# cp IMAGE_FOV_0003.fits IMAGE_FOV_0003_3.fits
+# cp PIXTABLE_REDUCED_0001.fits PIXTABLE_REDUCED_0001_3.fits
+# cp DATACUBE_FINAL.fits DATACUBE_SINGLE_FINAL_0001_3.fits
 
-echo " "
-echo "=======  ALIGN AND COMBINE   ======="
+# echo " "
+# echo "=======  ALIGN AND COMBINE   ======="
 
-echo "Aligning cubes..."
-esorex muse_exp_align align.sof
+# echo "Aligning cubes..."
+# esorex muse_exp_align align.sof
 
 echo "Combining cubes..."
-esorex muse_exp_combine --pixfrac=0.8 --filter=white,Johnson_V,Cousins_R,Cousins_I cube.sof
+esorex muse_exp_combine --pixfrac=0.8 --filter=white,Johnson_V,Cousins_R,Cousins_I combine_without_offset_list.sof
 
 echo "Renaming DATACUBE_FINAL.fits to DATACUBE_DIRTY.fits"
 mv DATACUBE_FINAL.fits DATACUBE_DIRTY.fits
