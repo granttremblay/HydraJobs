@@ -1,0 +1,23 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 40
+#$ -l s_cpu=0:10:00
+#$ -l mres=6G,h_data=6G,h_vmem=6G
+#$ -cwd
+#$ -j y
+#$ -N Geekbench
+#$ -o Geekbench.log
+#$ -m bea
+#$ -M grant.tremblay@cfa.harvard.edu
+#
+# ----------------Modules------------------------- #
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+/home/gtremblay/Software/Geekbench/Geekbench-4.2.2-Linux/geekbench4
+#
+echo = `date` job $JOB_NAME done
