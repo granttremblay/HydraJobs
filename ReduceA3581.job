@@ -1,0 +1,25 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 24
+#$ -l s_cpu=12:00:00
+#$ -l mres=6G,h_data=6G,h_vmem=6G
+#$ -cwd
+#$ -j y
+#$ -N aoidetest
+#$ -o aoidetest.log
+#$ -m bea
+#$ -M grant.tremblay@cfa.harvard.edu
+#
+# ----------------Modules------------------------- #
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+source ~/.dotfiles/Linux/hydra/set_eso_pipeline_environment.bash
+cd /data/sao/gtremblay/museA3581/rawdata/
+/home/gtremblay/Software/Anaconda/bin/python /home/gtremblay/Software/aoide/bin/AoideReduce.py -c 24
+#
+echo = `date` job $JOB_NAME done
