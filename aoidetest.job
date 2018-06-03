@@ -20,6 +20,6 @@ echo + NSLOTS = $NSLOTS
 #
 source ~/.dotfiles/Linux/hydra/set_eso_pipeline_environment.bash
 cd /data/sao/gtremblay/museA3581/rawdata/
-/home/gtremblay/Software/Anaconda/bin/python /home/gtremblay/Software/aoide/bin/AoideReduce.py -c 24
+/home/gtremblay/Software/Anaconda/bin/python /home/gtremblay/Software/aoide/bin/AoideReduce.py -c 24 --static_cal_dir "/home/gtremblay/Software/MUSE/calib/muse-2.2/cal"
 #
 echo = `date` job $JOB_NAME done
