@@ -1,0 +1,31 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 24
+#$ -q sThC.q
+#$ -l mres=5G,h_data=5G,h_vmem=5G
+#$ -cwd
+#$ -j y
+#$ -N paradisetest
+#$ -o paradisetest.log
+#$ -m bea
+#$ -M grant.tremblay@cfa.havard.edu
+#
+# ----------------Modules------------------------- #
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+cd /data/sao/gtremblay/museA3581/fitting
+/home/gtremblay/Software/Anaconda/bin/python /home/gtremblay/Software/Paradise/bin/ParadiseApp.py Abell3581.voronoi_rss.fits Abell3581_redo 2.4 --SSP_par parameters_stellar_voronoi --parallel 6 --verbose
+
+
+/home/gtremblay/Software/Anaconda/bin/python /home/gtremblay/Software/aoide/bin/AoideKinTable.py "Abell3581"
+
+/home/gtremblay/Software/Anaconda/bin/python /home/gtremblay/Software/Paradise/bin/ParadiseApp.py Abell3581.unbinned_cube.fits Abell3581_redo 2.4 --line_par parameters_eline --SSP_par parameters_stellar_kinfix_for_eline --parallel 6 --verbose
+
+/home/gtremblay/Software/Anaconda/bin/python /home/gtremblay/Software/Paradise/bin/ParadiseApp.py Abell3581.unbinned_cube.fits Abell3581_redo 2.4 --SSP_par parameters_stellar_kinfix_for_eline --line_par parameters_eline --bootstraps 100 --parallel 6 --verbose
+#
+echo = `date` job $JOB_NAME done
